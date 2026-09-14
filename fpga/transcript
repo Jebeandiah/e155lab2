@@ -1,0 +1,1501 @@
+# Reading pref.tcl
+# //  Questa Lattice OEM Edition-64
+# //  Version 2025.2 win64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/counter.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/lab2_bl.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/scanner.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/sevenseg.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 21:52:20 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/counter.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/lab2_bl.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/scanner.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/sevenseg.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module counter
+# -- Compiling module lab2_bl
+# -- Compiling module scanner
+# -- Compiling module sevenseg
+# 
+# Top level modules:
+# 	lab2_bl
+# End time: 21:52:20 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 21:52:33 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module scanner_tb
+# 
+# Top level modules:
+# 	scanner_tb
+# End time: 21:52:33 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui work.scanner_tb -voptargs=+acc -L iCE40UP
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui work.scanner_tb -voptargs="+acc" -L iCE40UP 
+# Start time: 21:52:55 on Sep 13,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.scanner_tb(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast)
+add wave -position insertpoint  \
+sim:/scanner_tb/clk \
+sim:/scanner_tb/enable \
+sim:/scanner_tb/MAX_COUNT \
+sim:/scanner_tb/one_hot_col \
+sim:/scanner_tb/reset
+run -all
+# PASSED! counter reset initially works at time: 15.
+# PASSED! not enable successfully prevents increment at time: 45.
+# PASSED!  successfully incremented at time: 55.
+# PASSED!  successfully paused at time: 65.
+# PASSED! light still off at half max at t: 66.
+# ** Error: FAILED! light off after half max at t: 76.
+#    Time: 76 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 74
+# PASSED!  successfully reset from non zero: 86.
+# ** Error: FAILED! light still on at half max at t: 96.
+#    Time: 96 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 92
+# ** Error: FAILED! light off after half max at t: 106.
+#    Time: 106 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 98
+# ** Error: FAILED! light still on at half max at t: 116.
+#    Time: 116 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 106
+# ** Error: FAILED! light off after half max at t: 126.
+#    Time: 126 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 112
+# ** Error: FAILED! light still on at half max at t: 136.
+#    Time: 136 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 120
+# PASSED! wrapped after  max at t: 146.
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv(131)
+#    Time: 246 ns  Iteration: 0  Instance: /scanner_tb
+# Break in Module scanner_tb at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv line 131
+# Causality operation skipped due to absence of debug database file
+add wave -position insertpoint  \
+sim:/scanner_tb/dut/scanning_counter/counter
+run -all
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 21:56:56 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module scanner_tb
+# 
+# Top level modules:
+# 	scanner_tb
+# End time: 21:56:56 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.scanner_tb
+# End time: 21:57:08 on Sep 13,2026, Elapsed time: 0:04:13
+# Errors: 6, Warnings: 1
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.scanner_tb 
+# Start time: 21:57:08 on Sep 13,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt2
+# Loading sv_std.std
+# Loading work.scanner_tb(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast)
+add wave -position insertpoint  \
+sim:/scanner_tb/dut/scanning_counter/counter
+add wave -position insertpoint  \
+sim:/scanner_tb/clk \
+sim:/scanner_tb/enable \
+sim:/scanner_tb/MAX_COUNT \
+sim:/scanner_tb/one_hot_col \
+sim:/scanner_tb/reset
+run -all
+# PASSED! counter reset initially works at time: 15.
+# PASSED! not enable successfully prevents increment at time: 45.
+# PASSED!  successfully incremented at time: 55.
+# PASSED!  successfully paused at time: 65.
+# PASSED! light still off at half max at t: 66.
+# ** Error: FAILED! light off after half max at t: 76.
+#    Time: 76 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 74
+# PASSED!  successfully reset from non zero: 86.
+# ** Error: FAILED! light still on at half max at t: 96.
+#    Time: 96 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 92
+# ** Error: FAILED! light off after half max at t: 106.
+#    Time: 106 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 98
+# ** Error: FAILED! light still on at half max at t: 116.
+#    Time: 116 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 106
+# ** Error: FAILED! light off after half max at t: 126.
+#    Time: 126 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 112
+# ** Error: FAILED! light still on at half max at t: 136.
+#    Time: 136 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 120
+# PASSED! wrapped after  max at t: 146.
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv(131)
+#    Time: 246 ns  Iteration: 0  Instance: /scanner_tb
+# Break in Module scanner_tb at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv line 131
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 22:01:00 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module scanner_tb
+# 
+# Top level modules:
+# 	scanner_tb
+# End time: 22:01:00 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.scanner_tb
+# End time: 22:01:15 on Sep 13,2026, Elapsed time: 0:04:07
+# Errors: 6, Warnings: 0
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.scanner_tb 
+# Start time: 22:01:15 on Sep 13,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.scanner_tb(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast)
+add wave -position insertpoint  \
+sim:/scanner_tb/clk \
+sim:/scanner_tb/enable \
+sim:/scanner_tb/MAX_COUNT \
+sim:/scanner_tb/one_hot_col \
+sim:/scanner_tb/reset
+run -all
+# PASSED! counter reset initially works at time: 15.
+# PASSED! not enable successfully prevents increment at time: 45.
+# PASSED!  successfully incremented at time: 55.
+# PASSED!  successfully paused at time: 65.
+# PASSED! light still off at half max at t: 75.
+# ** Error: FAILED! light off after half max at t: 85.
+#    Time: 85 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 74
+# PASSED!  successfully reset from non zero: 86.
+# ** Error: FAILED! light still on at half max at t: 96.
+#    Time: 96 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 92
+# ** Error: FAILED! light off after half max at t: 106.
+#    Time: 106 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 98
+# ** Error: FAILED! light still on at half max at t: 116.
+#    Time: 116 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 106
+# ** Error: FAILED! light off after half max at t: 126.
+#    Time: 126 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 112
+# ** Error: FAILED! light still on at half max at t: 136.
+#    Time: 136 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 120
+# PASSED! wrapped after  max at t: 146.
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv(131)
+#    Time: 246 ns  Iteration: 0  Instance: /scanner_tb
+# Break in Module scanner_tb at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv line 131
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 22:02:16 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module scanner_tb
+# 
+# Top level modules:
+# 	scanner_tb
+# End time: 22:02:16 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.scanner_tb
+# End time: 22:02:30 on Sep 13,2026, Elapsed time: 0:01:15
+# Errors: 6, Warnings: 1
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.scanner_tb 
+# Start time: 22:02:30 on Sep 13,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.scanner_tb(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast)
+add wave -position insertpoint  \
+sim:/scanner_tb/clk \
+sim:/scanner_tb/enable \
+sim:/scanner_tb/MAX_COUNT \
+sim:/scanner_tb/one_hot_col \
+sim:/scanner_tb/reset
+run -all
+# PASSED! counter reset initially works at time: 15.
+# PASSED! not enable successfully prevents increment at time: 45.
+# PASSED!  successfully incremented at time: 55.
+# PASSED!  successfully paused at time: 65.
+# PASSED! light still off at half max at t: 75.
+# ** Error: FAILED! light off after half max at t: 85.
+#    Time: 85 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 75
+# PASSED!  successfully reset from non zero: 86.
+# ** Error: FAILED! light still on at half max at t: 96.
+#    Time: 96 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 93
+# ** Error: FAILED! light off after half max at t: 106.
+#    Time: 106 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 99
+# ** Error: FAILED! light still on at half max at t: 116.
+#    Time: 116 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 107
+# ** Error: FAILED! light off after half max at t: 126.
+#    Time: 126 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 113
+# ** Error: FAILED! light still on at half max at t: 136.
+#    Time: 136 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 121
+# PASSED! wrapped after  max at t: 146.
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv(132)
+#    Time: 246 ns  Iteration: 0  Instance: /scanner_tb
+# Break in Module scanner_tb at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv line 132
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 22:11:20 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module scanner_tb
+# 
+# Top level modules:
+# 	scanner_tb
+# End time: 22:11:20 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.scanner_tb
+# End time: 22:11:33 on Sep 13,2026, Elapsed time: 0:09:03
+# Errors: 6, Warnings: 1
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.scanner_tb 
+# Start time: 22:11:33 on Sep 13,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.scanner_tb(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast)
+add wave -position insertpoint  \
+sim:/scanner_tb/clk \
+sim:/scanner_tb/enable \
+sim:/scanner_tb/MAX_COUNT \
+sim:/scanner_tb/one_hot_col \
+sim:/scanner_tb/reset
+add wave -position insertpoint  \
+sim:/scanner_tb/dut/scanning_counter/counter
+run -all
+# PASSED! counter reset initially works at time: 15.
+# PASSED! not enable successfully prevents increment at time: 45.
+# PASSED!  successfully incremented at time: 55.
+# PASSED!  successfully paused at time: 65.
+# PASSED! light still off at half max at t: 66.
+# ** Error: FAILED! light off after half max at t: 76.
+#    Time: 76 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 76
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv(82)
+#    Time: 176 ns  Iteration: 0  Instance: /scanner_tb
+# Break in Module scanner_tb at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv line 82
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 22:13:26 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module scanner_tb
+# 
+# Top level modules:
+# 	scanner_tb
+# End time: 22:13:26 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.scanner_tb
+# End time: 22:13:42 on Sep 13,2026, Elapsed time: 0:02:09
+# Errors: 1, Warnings: 1
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.scanner_tb 
+# Start time: 22:13:42 on Sep 13,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Error (suppressible): C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv(63): (vopt-7063) Failed to find 'dut' in hierarchical name 'dut.dut.scanning_counter.counter'.
+#         Region: scanner_tb
+# Optimization failed
+# ** Warning: (vopt-31) Unable to unlink file "C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/work/@_opt2/_lib.qdb".
+# ** Warning: (vopt-31) Unable to unlink file "C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/work/@_opt2/_lib3_2.qdb".
+# The process cannot access the file because it is being used by another process. (GetLastError() = 32)
+# ** Warning: (vopt-31) Unable to unlink file "C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/work/@_opt2/_lib3_2.qpg".
+# The process cannot access the file because it is being used by another process. (GetLastError() = 32)
+# ** Warning: (vopt-31) Unable to unlink file "C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/work/@_opt2/_lib3_2.qtl".
+# The process cannot access the file because it is being used by another process. (GetLastError() = 32)
+# ** Warning: (vopt-133) Unable to remove directory "C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/work/@_opt2".
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=1, Warnings=6.
+# Error loading design
+# End time: 22:13:42 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 6
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 22:14:10 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module scanner_tb
+# 
+# Top level modules:
+# 	scanner_tb
+# End time: 22:14:10 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.scanner_tb
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.scanner_tb 
+# Start time: 22:14:22 on Sep 13,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Warning: (vopt-31) Unable to unlink file "C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/work/@_opt2/_lib3_2.qpg".
+# ** Warning: (vopt-31) Unable to unlink file "C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/work/@_opt2/_lib3_2.qtl".
+# The process cannot access the file because it is being used by another process. (GetLastError() = 32)
+# ** Warning: (vopt-133) Unable to remove directory "C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/work/@_opt2".
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=4.
+# Loading sv_std.std
+# Loading work.scanner_tb(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast)
+add wave -position insertpoint  \
+sim:/scanner_tb/clk \
+sim:/scanner_tb/enable \
+sim:/scanner_tb/MAX_COUNT \
+sim:/scanner_tb/one_hot_col \
+sim:/scanner_tb/reset
+add wave -position insertpoint  \
+sim:/scanner_tb/dut/scanning_counter/counter
+run -all
+# PASSED! counter reset initially works at time: 15.
+# PASSED! not enable successfully prevents increment at time: 45.
+# PASSED!  successfully incremented at time: 55.
+# PASSED!  successfully paused at time: 65.
+# PASSED! light still off at half max at t: 66.
+# PASSED! light on after half max at t: 76.
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv(82)
+#    Time: 176 ns  Iteration: 0  Instance: /scanner_tb
+# Break in Module scanner_tb at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv line 82
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 22:20:56 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module scanner_tb
+# 
+# Top level modules:
+# 	scanner_tb
+# End time: 22:20:56 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.scanner_tb
+# End time: 22:21:17 on Sep 13,2026, Elapsed time: 0:06:55
+# Errors: 0, Warnings: 4
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.scanner_tb 
+# Start time: 22:21:18 on Sep 13,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.scanner_tb(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast)
+add wave -position insertpoint  \
+sim:/scanner_tb/clk \
+sim:/scanner_tb/enable \
+sim:/scanner_tb/MAX_COUNT \
+sim:/scanner_tb/one_hot_col \
+sim:/scanner_tb/reset
+add wave -position insertpoint  \
+sim:/scanner_tb/dut/scanning_counter/counter
+run -all
+# PASSED! counter reset initially works at time: 15.
+# PASSED! not enable successfully prevents increment at time: 45.
+# PASSED!  successfully incremented at time: 55.
+# PASSED!  successfully paused at time: 65.
+# PASSED! light still off at half max at t: 66.
+# PASSED! light on after half max at t: 76.
+# PASSED! reset from non zero at t: 86.
+# PASSED! light still off at half max at t: 96.
+# PASSED! light on after half max at t: 106.
+# PASSED! light still off at half max at t: 116.
+# PASSED! light on after half max at t: 126.
+# ** Error: FAILED! light still on at half max at t: 136.
+#    Time: 136 ns  Scope: scanner_tb File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv Line: 124
+# PASSED! light on after half max at t: 146.
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv(132)
+#    Time: 246 ns  Iteration: 0  Instance: /scanner_tb
+# Break in Module scanner_tb at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/scanner_tb.sv line 132
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 22:57:37 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(19): near "scan_col_out": syntax error, unexpected IDENTIFIER, expecting .* or '.'.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(29): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(36): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(43): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(50): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(57): near ")": syntax error, unexpected ')', expecting '('.
+# End time: 22:57:37 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 6, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 22:58:29 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(29): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(36): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(43): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(50): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(57): near ")": syntax error, unexpected ')', expecting '('.
+# End time: 22:58:29 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 22:59:24 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(29): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(36): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(43): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(50): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(57): near ")": syntax error, unexpected ')', expecting '('.
+# End time: 22:59:24 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 22:59:57 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(29): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(36): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(43): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(50): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(57): near ")": syntax error, unexpected ')', expecting '('.
+# End time: 22:59:57 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 22:59:57 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(29): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(36): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(43): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(50): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(57): near ")": syntax error, unexpected ')', expecting '('.
+# End time: 22:59:58 on Sep 13,2026, Elapsed time: 0:00:01
+# Errors: 5, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 22:59:58 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(29): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(36): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(43): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(50): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(57): near ")": syntax error, unexpected ')', expecting '('.
+# End time: 22:59:58 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:00:07 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(29): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(36): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(43): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(50): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(57): near ")": syntax error, unexpected ')', expecting '('.
+# End time: 23:00:07 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:00:10 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(29): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(36): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(43): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(50): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(57): near ")": syntax error, unexpected ')', expecting '('.
+# End time: 23:00:10 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:01:18 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(29): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(36): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(43): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(50): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(57): near ")": syntax error, unexpected ')', expecting '('.
+# End time: 23:01:18 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:02:59 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(29): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(36): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(43): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(50): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(57): near ")": syntax error, unexpected ')', expecting '('.
+# End time: 23:02:59 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:03:02 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(29): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(36): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(43): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(50): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(57): near ")": syntax error, unexpected ')', expecting '('.
+# End time: 23:03:02 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:03:20 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(29): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(36): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(43): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(50): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(57): near ")": syntax error, unexpected ')', expecting '('.
+# End time: 23:03:20 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:03:21 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(29): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(36): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(43): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(50): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(57): near ")": syntax error, unexpected ')', expecting '('.
+# End time: 23:03:22 on Sep 13,2026, Elapsed time: 0:00:01
+# Errors: 5, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:03:22 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(29): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(36): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(43): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(50): near ")": syntax error, unexpected ')', expecting '('.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(57): near ")": syntax error, unexpected ')', expecting '('.
+# End time: 23:03:22 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:04:30 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(29): near "'0": syntax error, unexpected UNSIZED_BIT.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(36): near "'0": syntax error, unexpected UNSIZED_BIT.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(43): near "'0": syntax error, unexpected UNSIZED_BIT.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(50): near "'0": syntax error, unexpected UNSIZED_BIT.
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(57): near "'0": syntax error, unexpected UNSIZED_BIT.
+# End time: 23:04:30 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:04:53 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# 
+# Top level modules:
+# 	testbenchtop
+# End time: 23:04:53 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.testbenchtop
+# End time: 23:05:06 on Sep 13,2026, Elapsed time: 0:43:48
+# Errors: 1, Warnings: 1
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.testbenchtop 
+# Start time: 23:05:06 on Sep 13,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+add wave -position insertpoint  \
+sim:/testbenchtop/active_display \
+sim:/testbenchtop/last_seg \
+sim:/testbenchtop/s_1 \
+sim:/testbenchtop/s_2 \
+sim:/testbenchtop/scan_col_out \
+sim:/testbenchtop/scan_led \
+sim:/testbenchtop/scan_row_in \
+sim:/testbenchtop/seg
+add wave -position insertpoint  \
+sim:/testbenchtop/dut/int_osc
+run -all
+# ** Error: FAILED! SEVEN seg mux at time: 833344000.
+#    Time: 833344 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 32
+# ** Error: FAILED! SEVEN seg mux at time: 1666678000.
+#    Time: 1666678 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 39
+# ** Error: FAILED! SEVEN seg mux at time: 2500012000.
+#    Time: 2500012 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 46
+# ** Error: FAILED! SEVEN seg mux at time: 3333346000.
+#    Time: 3333346 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 53
+# ** Error: FAILED! SEVEN seg mux at time: 4166680000.
+#    Time: 4166680 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 60
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(61)
+#    Time: 4166780 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 61
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:07:40 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# 
+# Top level modules:
+# 	testbenchtop
+# End time: 23:07:40 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.testbenchtop
+# End time: 23:07:56 on Sep 13,2026, Elapsed time: 0:02:50
+# Errors: 5, Warnings: 1
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.testbenchtop 
+# Start time: 23:07:56 on Sep 13,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+add wave -position insertpoint  \
+sim:/testbenchtop/active_display \
+sim:/testbenchtop/last_seg \
+sim:/testbenchtop/s_1 \
+sim:/testbenchtop/s_2 \
+sim:/testbenchtop/scan_col_out \
+sim:/testbenchtop/scan_led \
+sim:/testbenchtop/scan_row_in \
+sim:/testbenchtop/seg
+run -all
+# ** Error: FAILED! SEVEN seg mux at time: 3333346000.
+#    Time: 3333346 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 37
+# ** Error: FAILED! SEVEN seg mux at time: 4166680000.
+#    Time: 4166680 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 44
+# ** Error: FAILED! SEVEN seg mux at time: 5000014000.
+#    Time: 5000014 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 51
+# ** Error: FAILED! SEVEN seg mux at time: 5833348000.
+#    Time: 5833348 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 58
+# ** Error: FAILED! SEVEN seg mux at time: 6666682000.
+#    Time: 6666682 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 65
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(66)
+#    Time: 6666782 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 66
+add wave -position insertpoint  \
+sim:/testbenchtop/dut/hf_osc/CLKHF
+run -all
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+vsim -gui -voptargs=+acc -L iCE40UP work.testbenchtop
+# End time: 23:08:50 on Sep 13,2026, Elapsed time: 0:00:54
+# Errors: 0, Warnings: 1
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.testbenchtop 
+# Start time: 23:08:50 on Sep 13,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading sv_std.std
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:11:30 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# 
+# Top level modules:
+# 	testbenchtop
+# End time: 23:11:30 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.testbenchtop
+# End time: 23:11:42 on Sep 13,2026, Elapsed time: 0:02:52
+# Errors: 0, Warnings: 0
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.testbenchtop 
+# Start time: 23:11:42 on Sep 13,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+add wave -position insertpoint  \
+sim:/testbenchtop/active_display \
+sim:/testbenchtop/last_seg \
+sim:/testbenchtop/s_1 \
+sim:/testbenchtop/s_2 \
+sim:/testbenchtop/scan_col_out \
+sim:/testbenchtop/scan_led \
+sim:/testbenchtop/scan_row_in \
+sim:/testbenchtop/seg
+add wave -position insertpoint  \
+sim:/testbenchtop/dut/hf_osc/CLKHF
+run -all
+# ** Error: FAILED! SEVEN seg mux at time: 16666678000.
+#    Time: 16666678 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 37
+# ** Error: FAILED! SEVEN seg mux at time: 20833345000.
+#    Time: 20833345 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 44
+# ** Error: FAILED! SEVEN seg mux at time: 25000012000.
+#    Time: 25000012 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 51
+# ** Error: FAILED! SEVEN seg mux at time: 29166679000.
+#    Time: 29166679 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 58
+# ** Error: FAILED! SEVEN seg mux at time: 33333346000.
+#    Time: 33333346 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 65
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(66)
+#    Time: 33333446 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 66
+add wave -position insertpoint  \
+sim:/testbenchtop/dut/multiplexing_counter/clk
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+run -all
+# ** Error: FAILED! SEVEN seg mux at time: 16666678000.
+#    Time: 16666678 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 37
+# ** Error: FAILED! SEVEN seg mux at time: 20833345000.
+#    Time: 20833345 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 44
+# ** Error: FAILED! SEVEN seg mux at time: 25000012000.
+#    Time: 25000012 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 51
+# ** Error: FAILED! SEVEN seg mux at time: 29166679000.
+#    Time: 29166679 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 58
+# ** Error: FAILED! SEVEN seg mux at time: 33333346000.
+#    Time: 33333346 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 65
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(66)
+#    Time: 33333446 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 66
+# Load canceled
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:16:27 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# ** Error: (vlog-13069) C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(16): near "b": syntax error, unexpected IDENTIFIER, expecting ';'.
+# End time: 23:16:27 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:16:39 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# 
+# Top level modules:
+# 	testbenchtop
+# End time: 23:16:39 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.testbenchtop
+# End time: 23:16:54 on Sep 13,2026, Elapsed time: 0:05:12
+# Errors: 5, Warnings: 1
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.testbenchtop 
+# Start time: 23:16:54 on Sep 13,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+run -all
+# ** Error: FAILED! SEVEN seg mux at time: 12500011000.
+#    Time: 12500011 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 35
+# ** Error: FAILED! SEVEN seg mux at time: 16666678000.
+#    Time: 16666678 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 42
+# ** Error: FAILED! SEVEN seg mux at time: 20833345000.
+#    Time: 20833345 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 49
+# ** Error: FAILED! SEVEN seg mux at time: 25000012000.
+#    Time: 25000012 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 56
+# ** Error: FAILED! SEVEN seg mux at time: 29166679000.
+#    Time: 29166679 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 63
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(64)
+#    Time: 29166779 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 64
+add wave -position insertpoint  \
+sim:/testbenchtop/dut/hf_osc/CLKHF
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+run -all
+# ** Error: FAILED! SEVEN seg mux at time: 12500011000.
+#    Time: 12500011 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 35
+# ** Error: FAILED! SEVEN seg mux at time: 16666678000.
+#    Time: 16666678 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 42
+# ** Error: FAILED! SEVEN seg mux at time: 20833345000.
+#    Time: 20833345 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 49
+# ** Error: FAILED! SEVEN seg mux at time: 25000012000.
+#    Time: 25000012 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 56
+# ** Error: FAILED! SEVEN seg mux at time: 29166679000.
+#    Time: 29166679 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 63
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(64)
+#    Time: 29166779 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 64
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/counter.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/lab2_bl.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/scanner.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/sevenseg.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:20:38 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/counter.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/lab2_bl.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/scanner.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/sevenseg.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module counter
+# -- Compiling module lab2_bl
+# -- Compiling module scanner
+# -- Compiling module sevenseg
+# 
+# Top level modules:
+# 	lab2_bl
+# End time: 23:20:38 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:20:51 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# 
+# Top level modules:
+# 	testbenchtop
+# End time: 23:20:51 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.testbenchtop
+# End time: 23:21:08 on Sep 13,2026, Elapsed time: 0:04:14
+# Errors: 5, Warnings: 1
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.testbenchtop 
+# Start time: 23:21:08 on Sep 13,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+run -all
+# ** Error: FAILED! SEVEN seg mux at time: 12500011000.
+#    Time: 12500011 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 35
+# ** Error: FAILED! SEVEN seg mux at time: 16666678000.
+#    Time: 16666678 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 42
+# ** Error: FAILED! SEVEN seg mux at time: 20833345000.
+#    Time: 20833345 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 49
+# ** Error: FAILED! SEVEN seg mux at time: 25000012000.
+#    Time: 25000012 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 56
+# ** Error: FAILED! SEVEN seg mux at time: 29166679000.
+#    Time: 29166679 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 63
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(64)
+#    Time: 29166779 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 64
+add wave -position insertpoint  \
+sim:/testbenchtop/active_display \
+sim:/testbenchtop/last_seg \
+sim:/testbenchtop/s_1 \
+sim:/testbenchtop/s_2 \
+sim:/testbenchtop/scan_col_out \
+sim:/testbenchtop/scan_led \
+sim:/testbenchtop/scan_row_in \
+sim:/testbenchtop/seg
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+run -all
+# ** Error: FAILED! SEVEN seg mux at time: 12500011000.
+#    Time: 12500011 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 35
+# ** Error: FAILED! SEVEN seg mux at time: 16666678000.
+#    Time: 16666678 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 42
+# ** Error: FAILED! SEVEN seg mux at time: 20833345000.
+#    Time: 20833345 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 49
+# ** Error: FAILED! SEVEN seg mux at time: 25000012000.
+#    Time: 25000012 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 56
+# ** Error: FAILED! SEVEN seg mux at time: 29166679000.
+#    Time: 29166679 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 63
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(64)
+#    Time: 29166779 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 64
+add wave -position insertpoint  \
+sim:/testbenchtop/dut/keypad_scanner/clk
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+run -all
+# ** Error: FAILED! SEVEN seg mux at time: 12500011000.
+#    Time: 12500011 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 35
+# ** Error: FAILED! SEVEN seg mux at time: 16666678000.
+#    Time: 16666678 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 42
+# ** Error: FAILED! SEVEN seg mux at time: 20833345000.
+#    Time: 20833345 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 49
+# ** Error: FAILED! SEVEN seg mux at time: 25000012000.
+#    Time: 25000012 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 56
+# ** Error: FAILED! SEVEN seg mux at time: 29166679000.
+#    Time: 29166679 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 63
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(64)
+#    Time: 29166779 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 64
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:23:33 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# 
+# Top level modules:
+# 	testbenchtop
+# End time: 23:23:33 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.testbenchtop
+# End time: 23:23:44 on Sep 13,2026, Elapsed time: 0:02:36
+# Errors: 5, Warnings: 1
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.testbenchtop 
+# Start time: 23:23:44 on Sep 13,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading sv_std.std
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+add wave -position insertpoint  \
+sim:/testbenchtop/active_display \
+sim:/testbenchtop/last_seg \
+sim:/testbenchtop/s_1 \
+sim:/testbenchtop/s_2 \
+sim:/testbenchtop/scan_col_out \
+sim:/testbenchtop/scan_led \
+sim:/testbenchtop/scan_row_in \
+sim:/testbenchtop/seg
+run -all
+# ** Error: FAILED! SEVEN seg mux at time: 12500011000.
+#    Time: 12500011 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 35
+# ** Error: FAILED! SEVEN seg mux at time: 16666678000.
+#    Time: 16666678 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 42
+# ** Error: FAILED! SEVEN seg mux at time: 20833345000.
+#    Time: 20833345 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 49
+# ** Error: FAILED! SEVEN seg mux at time: 25000012000.
+#    Time: 25000012 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 56
+# ** Error: FAILED! SEVEN seg mux at time: 29166679000.
+#    Time: 29166679 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 63
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(64)
+#    Time: 29166779 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 64
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:24:58 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# 
+# Top level modules:
+# 	testbenchtop
+# End time: 23:24:58 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.testbenchtop
+# End time: 23:25:14 on Sep 13,2026, Elapsed time: 0:01:30
+# Errors: 5, Warnings: 0
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.testbenchtop 
+# Start time: 23:25:14 on Sep 13,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+add wave -position insertpoint  \
+sim:/testbenchtop/active_display \
+sim:/testbenchtop/last_seg \
+sim:/testbenchtop/s_1 \
+sim:/testbenchtop/s_2 \
+sim:/testbenchtop/scan_col_out \
+sim:/testbenchtop/scan_led \
+sim:/testbenchtop/scan_row_in \
+sim:/testbenchtop/seg
+run -all
+# ** Error: FAILED! SEVEN seg mux at time: 425000044000.
+#    Time: 425000044 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 35
+# ** Error: FAILED! SEVEN seg mux at time: 429166711000.
+#    Time: 429166711 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 42
+# ** Error: FAILED! SEVEN seg mux at time: 433333378000.
+#    Time: 433333378 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 49
+# ** Error: FAILED! SEVEN seg mux at time: 437500045000.
+#    Time: 437500045 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 56
+# ** Error: FAILED! SEVEN seg mux at time: 441666712000.
+#    Time: 441666712 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 63
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(64)
+#    Time: 441666812 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 64
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:32:13 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# 
+# Top level modules:
+# 	testbenchtop
+# End time: 23:32:13 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.testbenchtop
+# End time: 23:32:26 on Sep 13,2026, Elapsed time: 0:07:12
+# Errors: 5, Warnings: 1
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.testbenchtop 
+# Start time: 23:32:26 on Sep 13,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+add wave -position insertpoint  \
+sim:/testbenchtop/active_display \
+sim:/testbenchtop/last_seg \
+sim:/testbenchtop/s_1 \
+sim:/testbenchtop/s_2 \
+sim:/testbenchtop/scan_col_out \
+sim:/testbenchtop/scan_led \
+sim:/testbenchtop/scan_row_in \
+sim:/testbenchtop/seg
+run -all
+# ** Error: FAILED! SEVEN seg mux at time: 12500011000.
+#    Time: 12500011 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 36
+# ** Error: FAILED! SEVEN seg mux at time: 16666678000.
+#    Time: 16666678 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 43
+# ** Error: FAILED! SEVEN seg mux at time: 20833345000.
+#    Time: 20833345 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 50
+# ** Error: FAILED! SEVEN seg mux at time: 25000012000.
+#    Time: 25000012 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 57
+# ** Error: FAILED! SEVEN seg mux at time: 29166679000.
+#    Time: 29166679 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 64
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(65)
+#    Time: 29166779 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 65
+add wave -position insertpoint  \
+sim:/testbenchtop/dut/multiplexing_counter/counter
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+run -all
+# ** Error: FAILED! SEVEN seg mux at time: 12500011000.
+#    Time: 12500011 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 36
+# ** Error: FAILED! SEVEN seg mux at time: 16666678000.
+#    Time: 16666678 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 43
+# ** Error: FAILED! SEVEN seg mux at time: 20833345000.
+#    Time: 20833345 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 50
+# ** Error: FAILED! SEVEN seg mux at time: 25000012000.
+#    Time: 25000012 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 57
+# ** Error: FAILED! SEVEN seg mux at time: 29166679000.
+#    Time: 29166679 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 64
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(65)
+#    Time: 29166779 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 65
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:35:21 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# 
+# Top level modules:
+# 	testbenchtop
+# End time: 23:35:21 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.testbenchtop
+# End time: 23:35:32 on Sep 13,2026, Elapsed time: 0:03:06
+# Errors: 5, Warnings: 1
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.testbenchtop 
+# Start time: 23:35:32 on Sep 13,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading sv_std.std
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+add wave -position insertpoint  \
+sim:/testbenchtop/dut/multiplexing_counter/counter
+run -all
+# ** Error: FAILED! SEVEN seg mux at time: 12500011000.
+#    Time: 12500011 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 36
+# ** Error: FAILED! SEVEN seg mux at time: 16666678000.
+#    Time: 16666678 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 43
+# ** Error: FAILED! SEVEN seg mux at time: 20833345000.
+#    Time: 20833345 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 50
+# ** Error: FAILED! SEVEN seg mux at time: 25000012000.
+#    Time: 25000012 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 57
+# ** Error: FAILED! SEVEN seg mux at time: 29166679000.
+#    Time: 29166679 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 64
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(65)
+#    Time: 29166779 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 65
+add wave -position insertpoint  \
+sim:/testbenchtop/dut/multiplexing_counter/clk
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+run -all
+# ** Error: FAILED! SEVEN seg mux at time: 12500011000.
+#    Time: 12500011 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 36
+# ** Error: FAILED! SEVEN seg mux at time: 16666678000.
+#    Time: 16666678 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 43
+# ** Error: FAILED! SEVEN seg mux at time: 20833345000.
+#    Time: 20833345 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 50
+# ** Error: FAILED! SEVEN seg mux at time: 25000012000.
+#    Time: 25000012 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 57
+# ** Error: FAILED! SEVEN seg mux at time: 29166679000.
+#    Time: 29166679 ns  Scope: testbenchtop File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv Line: 64
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(65)
+#    Time: 29166779 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 65
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/counter.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/lab2_bl.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/scanner.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/sevenseg.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:39:03 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/counter.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/lab2_bl.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/scanner.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/sevenseg.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module counter
+# -- Compiling module lab2_bl
+# -- Compiling module scanner
+# -- Compiling module sevenseg
+# 
+# Top level modules:
+# 	lab2_bl
+# End time: 23:39:03 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:39:15 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# 
+# Top level modules:
+# 	testbenchtop
+# End time: 23:39:15 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.testbenchtop
+# End time: 23:39:28 on Sep 13,2026, Elapsed time: 0:03:56
+# Errors: 5, Warnings: 0
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.testbenchtop 
+# Start time: 23:39:28 on Sep 13,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+# ** Error (suppressible): (vsim-3839) Variable '/testbenchtop/dut/keypad_scanner/counter', driven via a port connection, is multiply driven. See C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/scanner.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /testbenchtop/dut/keypad_scanner File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/scanner.sv Line: 12
+# ** Error (suppressible): (vsim-3839) Variable '/testbenchtop/dut/multiplexing_count', driven via a port connection, is multiply driven. See C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/lab2_bl.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /testbenchtop/dut File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/lab2_bl.sv Line: 14
+# Error loading design
+# End time: 23:39:29 on Sep 13,2026, Elapsed time: 0:00:01
+# Errors: 2, Warnings: 1
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:43:07 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# 
+# Top level modules:
+# 	testbenchtop
+# End time: 23:43:07 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.testbenchtop
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.testbenchtop 
+# Start time: 23:43:23 on Sep 13,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+# ** Error (suppressible): (vsim-3839) Variable '/testbenchtop/dut/keypad_scanner/counter', driven via a port connection, is multiply driven. See C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/scanner.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /testbenchtop/dut/keypad_scanner File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/scanner.sv Line: 12
+# ** Error (suppressible): (vsim-3839) Variable '/testbenchtop/dut/multiplexing_count', driven via a port connection, is multiply driven. See C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/lab2_bl.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /testbenchtop/dut File: C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/lab2_bl.sv Line: 14
+# Error loading design
+# End time: 23:43:24 on Sep 13,2026, Elapsed time: 0:00:01
+# Errors: 2, Warnings: 1
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/counter.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/lab2_bl.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/scanner.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/sevenseg.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:43:43 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/counter.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/lab2_bl.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/scanner.sv C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/src/sevenseg.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module counter
+# -- Compiling module lab2_bl
+# -- Compiling module scanner
+# -- Compiling module sevenseg
+# 
+# Top level modules:
+# 	lab2_bl
+# End time: 23:43:43 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:43:48 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# 
+# Top level modules:
+# 	testbenchtop
+# End time: 23:43:48 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.testbenchtop
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.testbenchtop 
+# Start time: 23:43:59 on Sep 13,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+add wave -position insertpoint  \
+sim:/testbenchtop/seg \
+sim:/testbenchtop/scan_row_in \
+sim:/testbenchtop/scan_led \
+sim:/testbenchtop/scan_col_out \
+sim:/testbenchtop/s_2 \
+sim:/testbenchtop/s_1 \
+sim:/testbenchtop/last_seg \
+sim:/testbenchtop/active_display
+run -all
+# PASSED! seven seg mux at time: 12500011000.
+# PASSED! seven seg mux at time: 16666678000.
+# PASSED! seven seg mux at time: 20833345000.
+# PASSED! seven seg mux at time: 25000012000.
+# PASSED! seven seg mux at time: 29166679000.
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(67)
+#    Time: 29166779 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 67
+vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv
+# Questa Lattice OEM Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 23:47:40 on Sep 13,2026
+# vlog -reportprogress 300 -work work C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv 
+# ** Note: (vlog-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module testbenchtop
+# 
+# Top level modules:
+# 	testbenchtop
+# End time: 23:47:40 on Sep 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -voptargs=+acc -L iCE40UP work.testbenchtop
+# End time: 23:47:51 on Sep 13,2026, Elapsed time: 0:03:52
+# Errors: 0, Warnings: 1
+# ** Note: (vsim-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# vsim -gui -voptargs="+acc" -L iCE40UP work.testbenchtop 
+# Start time: 23:47:51 on Sep 13,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vopt-220) 'C:/lscc/radiant/2026.1/questasim/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+add wave -position insertpoint  \
+sim:/testbenchtop/seg \
+sim:/testbenchtop/scan_row_in \
+sim:/testbenchtop/scan_led \
+sim:/testbenchtop/scan_col_out \
+sim:/testbenchtop/s_2 \
+sim:/testbenchtop/s_1 \
+sim:/testbenchtop/last_seg \
+sim:/testbenchtop/active_display
+run -all
+# PASSED! seven seg mux at time: 12500011000.
+# PASSED! seven seg mux at time: 16666678000.
+# PASSED! seven seg mux at time: 20833345000.
+# PASSED! seven seg mux at time: 25000012000.
+# PASSED! seven seg mux at time: 29166679000.
+# PASSED! scanned correct at time: 29166680000.
+# PASSED! scanned correct at time: 29166681000.
+# PASSED! scanned correct at time: 29166682000.
+# PASSED! scanned correct at time: 29166683000.
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(91)
+#    Time: 29166783 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 91
+add wave -position insertpoint  \
+sim:/testbenchtop/dut/multiplexing_counter/clk
+add wave -position insertpoint  \
+sim:/testbenchtop/dut/multiplexing_counter/counter
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading work.testbenchtop(fast)
+# Loading work.lab2_bl(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.counter(fast)
+# Loading work.scanner(fast)
+# Loading work.counter(fast__1)
+# Loading work.sevenseg(fast)
+run -all
+# PASSED! seven seg mux at time: 12500011000.
+# PASSED! seven seg mux at time: 16666678000.
+# PASSED! seven seg mux at time: 20833345000.
+# PASSED! seven seg mux at time: 25000012000.
+# PASSED! seven seg mux at time: 29166679000.
+# PASSED! scanned correct at time: 29166680000.
+# PASSED! scanned correct at time: 29166681000.
+# PASSED! scanned correct at time: 29166682000.
+# PASSED! scanned correct at time: 29166683000.
+# ** Note: $stop    : C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv(91)
+#    Time: 29166783 ns  Iteration: 0  Instance: /testbenchtop
+# Break in Module testbenchtop at C:/Users/blertwachara/Documents/GitHub/e155lab2/fpga/sim/testbenchtop.sv line 91
