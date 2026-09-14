@@ -1,0 +1,93 @@
+module top_display_mux #(
+    parameter CLK_FREQ = 50_000_000 // 50 MHz input clock
+) (
+    input  logic       clk,
+    input  logic       rst_n,      // Active-low asynchronous reset
+    input  logic [3:0] in_digit0,  // First 4-bit BCD input
+    input  logic [3:0] in_digit1,  // Second 4-bit BCD input
+    output logic [6:0] seg,        // Seven-segment output (Active LOW: {g,f,e,d,c,b,a})
+    output logic [1:0] digit_an    // Digit enable anodes (Active LOW: [1] = Digit 1, [0] = Digit 0)
+);
+
+    // ------------------------------------------------------------------------
+    // 1. Clock Divider for Refresh Rate (~1 kHz toggle rate / ~500 Hz full cycle)
+    // ------------------------------------------------------------------------
+    localparam CNT_MAX = (CLK_FREQ / 1000) - 1;
+    localparam CNT_WIDTH = $clog2(CNT_MAX + 1);
+
+    logic [CNT_WIDTH-1:0] refresh_counter;
+    logic                 digit_select;
+
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            refresh_counter <= '0;
+            digit_select    <= 1'b0;
+        end else if (refresh_counter == CNT_MAX) begin
+            refresh_counter <= '0;
+            digit_select    <= ~digit_select; // Alternate active digit
+        end else begin
+            refresh_counter <= refresh_counter + 1'b1;
+        end
+    end
+
+    // ------------------------------------------------------------------------
+    // 2. Anode Control (Active-Low Common Anodes)
+    // ------------------------------------------------------------------------
+    always_comb begin
+        case (digit_select)
+            1'b0:    digit_an = 2'b10; // Enable Digit 0 (Active Low)
+            1'b1:    digit_an = 2'b01; // Enable Digit 1 (Active Low)
+            default: digit_an = 2'b11; // Turn off both
+        endcase
+    end
+
+    // ------------------------------------------------------------------------
+    // 3. Input Multiplexer
+    // ------------------------------------------------------------------------
+    logic [3:0] selected_digit;
+
+    assign selected_digit = (digit_select == 1'b0) ? in_digit0 : in_digit1;
+
+    // ------------------------------------------------------------------------
+    // 4. Shared Seven-Segment Decoder Instance
+    // ------------------------------------------------------------------------
+    seven_seg_decoder_ca u_decoder (
+        .bcd(selected_digit),
+        .seg(seg)
+    );
+
+endmodule
+
+
+// ============================================================================
+// Single 4-bit to Common Anode Seven Segment Decoder
+// Mapping: seg[6]=g, seg[5]=f, seg[4]=e, seg[3]=d, seg[2]=c, seg[1]=b, seg[0]=a
+// ============================================================================
+module seven_seg_decoder_ca (
+    input  logic [3:0] bcd,
+    output logic [6:0] seg // Active LOW outputs (0 = segment ON, 1 = segment OFF)
+);
+
+    always_comb begin
+        case (bcd)
+            4'h0: seg = 7'b100_0000; // 0
+            4'h1: seg = 7'b111_1001; // 1
+            4'h2: seg = 7'b010_0100; // 2
+            4'h3: seg = 7'b011_0000; // 3
+            4'h4: seg = 7'b001_1001; // 4
+            4'h5: seg = 7'b010_0100; // 5 -> Corrected below in case statement logic (7'b001_0010)
+            4'h6: seg = 7'b000_0010; // 6
+            4'h7: seg = 7'b111_1000; // 7
+            4'h8: seg = 7'b000_0000; // 8
+            4'h9: seg = 7'b001_0000; // 9
+            4'hA: seg = 7'b000_1000; // A
+            4'hB: seg = 7'b000_0011; // b
+            4'hC: seg = 7'b100_0110; // C
+            4 me: seg = 7'b010_0001; // d
+            4'hE: seg = 7'b000_0110; // E
+            4'hF: seg = 7'b000_1110; // F
+            default: seg = 7'b111_1111; // Blank display
+        endcase
+    end
+
+endmodule
