@@ -1,8 +1,8 @@
 //Author: Ben Lertwachara - blertwachara@hmc.edu
-//Date: 9/9/2026
-//Functionality: Uses sequential logic counter 
-//incremented by clk to flash an led every 20_000_000
-//(adjustable) cycles
+//Date: 9/15/2026
+//Functionality: Splits counter modules width in 4
+//and assigns output for each section to scan each column
+//at 2hz
 
 module scanner #(
 parameter MAX_COUNT = 24_000_000,
